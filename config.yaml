@@ -39,29 +39,29 @@ redis:
 # dead. Cryptofeed will restart the connection if no message is received in this time period. Default is 120 seconds. -1 means no timeout.
 
 exchanges:
-    BITMEX:
-        channel_timeouts:
-            l2_book: 30
-            trades: 120
-            ticker: 120
-            funding: -1
-        retries: -1
-        l2_book:
-            symbols: [XBTUSD]
-            max_depth: 10
-            book_delta: true
-            book_interval: 100000
-        trades: [XBTUSD]
-        ticker: [XBTUSD]
-        funding: [XBTUSD]
-#    COINBASE:
+#    BITMEX:
+#        channel_timeouts:
+#            l2_book: 30
+#            trades: 120
+#            ticker: 120
+#            funding: -1
 #        retries: -1
-#        l3_book:
-#            symbols: [BTC-USD]
+#        l2_book:
+#            symbols: [XBTUSD]
+#            max_depth: 10
 #            book_delta: true
 #            book_interval: 100000
-#        trades: [BTC-USD, ETH-USD, ETH-BTC]
-#        ticker: [BTC-USD]
+#        trades: [XBTUSD]
+#        ticker: [XBTUSD]
+#        funding: [XBTUSD]
+    COINBASE:
+        retries: -1
+        l3_book:
+            symbols: [BTC-USD]
+            book_delta: true
+            book_interval: 100000
+        trades: [BTC-USD]
+        ticker: [BTC-USD]
 
 # Where to store the data. Currently arctic, influx, elastic, and parquet are supported. More than one can be enabled
 storage: [influx]
@@ -143,7 +143,7 @@ plugins:
 
 # If configured, backfill will run in a separate process and
 # backfill trade data from earliest data (in storage) up to `start` (inclusive).
-backfill:
+#backfill:
 #    COINBASE:
 #        BTC-USD:
 #            start: '2017-01-01'
