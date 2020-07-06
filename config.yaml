@@ -56,7 +56,7 @@ exchanges:
 #        funding: [XBTUSD]
     COINBASE:
         retries: -1
-        l3_book:
+        l2_book:
             symbols: [BTC-USD]
             book_delta: true
             book_interval: 100000
