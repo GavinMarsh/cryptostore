@@ -6,7 +6,7 @@
 # retention_time: (redis only) if data removal is enabled (via del_after_read) will allow retention of data in redis for N seconds.
 # socket: (redis only) allows redis connections via a unix domain socket
 # start_flush: toggles if redis/kafka should be flushed at the start. Primarily for debugging, it will flush ALL of redis/kafka
-cache: redis
+cache: kafka
 
 kafka:
     # ip/port are for the bootstrap server
@@ -54,17 +54,17 @@ exchanges:
         trades: [XBTUSD]
         ticker: [XBTUSD]
         funding: [XBTUSD]
-    COINBASE:
-        retries: -1
-        l3_book:
-            symbols: [BTC-USD]
-            book_delta: true
-            book_interval: 100000
-        trades: [BTC-USD, ETH-USD, ETH-BTC]
-        ticker: [BTC-USD]
+#    COINBASE:
+#        retries: -1
+#        l3_book:
+#            symbols: [BTC-USD]
+#            book_delta: true
+#            book_interval: 100000
+#        trades: [BTC-USD, ETH-USD, ETH-BTC]
+#        ticker: [BTC-USD]
 
 # Where to store the data. Currently arctic, influx, elastic, and parquet are supported. More than one can be enabled
-storage: [arctic, influx]
+storage: [influx]
 
 # Configurable passthrough for data - data will be sent in realtime (no aggregation in redis).
 # To disable, remove
@@ -144,6 +144,6 @@ plugins:
 # If configured, backfill will run in a separate process and
 # backfill trade data from earliest data (in storage) up to `start` (inclusive).
 backfill:
-    COINBASE:
-        BTC-USD:
-            start: '2017-01-01'
+#    COINBASE:
+#        BTC-USD:
+#            start: '2017-01-01'
